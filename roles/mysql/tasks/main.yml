@@ -1,0 +1,34 @@
+---
+# tasks file for mysql
+
+- name: Install Mysql Packages
+  apt: name={{ item }} update_cache=yes state=latest
+  loop: [ 'mysql-server', 'python3-pip', 'python3-dev', 'libmysqlclient-dev', 'python3-mysqldb' ]
+
+- name: Create mysql database
+  mysql_db: name={{ wp_mysql_db }} state=present
+
+- name: Create mysql user
+  mysql_user:
+    name={{ wp_mysql_user }}
+    password={{ wp_mysql_password }}
+    host={{ wp_mysql_host }}  
+    priv=*.*:ALL
+  tags: wpuser
+    
+- name: bind mysql port on 10.133.119.17
+  lineinfile:
+    dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp="bind-address		= 127.0.0.1"
+    line="bind-address		= 10.133.119.17"
+  notify:
+    - restart mysql
+
+- name: Insert record user1
+  command: mysql --defaults-file=/etc/mysql/debian.cnf wordpress -BNe "INSERT INTO wp_users(user_login, user_pass, user_nicename, user_email ) VALUES ( '{{ user1_login }}', '{{ user1_pass }}', '{{ user1_nicename }}', '{{ user1_email }}');"
+
+- name: Insert record user2
+  command: mysql --defaults-file=/etc/mysql/debian.cnf wordpress -BNe "INSERT INTO wp_users(user_login, user_pass, user_nicename, user_email ) VALUES ( '{{ user2_login }}', '{{ user2_pass }}', '{{ user2_nicename }}', '{{ user2_email }}');"
+
+- name: Insert record user3
+  command: mysql --defaults-file=/etc/mysql/debian.cnf wordpress -BNe "INSERT INTO wp_users(user_login, user_pass, user_nicename, user_email ) VALUES ( '{{ user3_login }}', '{{ user3_pass }}', '{{ user3_nicename }}', '{{ user3_email }}');"

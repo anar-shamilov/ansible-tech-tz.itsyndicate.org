@@ -1,0 +1,6 @@
+---
+# defaults file for wordpress
+wp_mysql_db: wordpress
+wp_mysql_user: wordpress
+wp_mysql_password: password
+wp_mysql_host: 10.133.119.17

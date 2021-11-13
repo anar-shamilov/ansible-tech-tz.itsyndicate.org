@@ -1,0 +1,23 @@
+
+---
+# defaults file for mysql
+wp_mysql_db: wordpress
+wp_mysql_user: wordpress
+wp_mysql_password: password
+wp_mysql_host: 10.133.119.16
+
+user1_login: admin1
+user1_pass: $P$B9UpWcaHNfAIxbc4b2K51CsJ.eFVEV0
+user1_nicename: admin1
+user1_email: admin1@example.com
+
+user2_login: admin2
+user2_pass: $P$B9UpWcaHNfAIxbc4b2K51CsJ.eFVEV0
+user2_nicename: admin2
+user2_email: admin2@example.com
+
+user3_login: admin3
+user3_pass: $P$B9UpWcaHNfAIxbc4b2K51CsJ.eFVEV0
+user3_nicename: admin3
+user3_email: admin3@example.com
+

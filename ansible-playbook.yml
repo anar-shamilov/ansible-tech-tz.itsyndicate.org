@@ -1,0 +1,20 @@
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Install the package "net-tools"
+      apt:
+        update_cache: yes
+        pkg:
+        - net-tools
+
+- hosts: DB
+  roles:
+    - mysql
+
+- hosts: BACKEND
+  roles:
+    - wordpress
+
+- hosts: Web
+  roles:
+    - frontend
