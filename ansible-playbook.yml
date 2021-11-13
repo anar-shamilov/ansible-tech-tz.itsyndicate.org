@@ -1,19 +1,17 @@
 - hosts: all
   gather_facts: False
   tasks:
-    - name: Install the package "net-tools"
+    - name: Update the packages"
       apt:
         update_cache: yes
-        pkg:
-        - net-tools
 
 - hosts: DB
   roles:
-    - mysql
+    - database
 
 - hosts: BACKEND
   roles:
-    - wordpress
+    - backend
 
 - hosts: Web
   roles:
