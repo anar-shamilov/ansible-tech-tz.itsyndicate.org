@@ -1,0 +1,8 @@
+[Web]
+tech-tz.itsyndicate.org letsencrypt_email=anar.slov@gmail.com domain_name=tech-tz.itsyndicate.org
+
+[BACKEND]
+188.166.111.142
+
+[DB]
+188.166.113.102
